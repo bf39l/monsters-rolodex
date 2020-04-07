@@ -8,24 +8,34 @@ class App extends Component{
     super();
     
     this.state = {
-      monsters:[
-        {
-          name: "Frankenstein",
-          id: "asr1"
-        },
-        {
-          name: "Dracula",
-          id: "asr2"
-        },
-        {
-          name: "Zombie",
-          id: "asr3"
-        }
-      ]
+      monsters:[{
+        "id": 0,
+        "name": "Bo"
+      }]
     };
+  }
+  componentDidMount(){
+    // making API request to that URL
+    fetch("https://jsonplaceholder.typicode.com/users")
+    // give reponse in json format which we want / coverting into json format/object
+      .then((response) => {
+        //only convert body of response to json object
+        return response.json()
+      })
+    // return us a new format which is a body (of URL) -> array 
+    // set monsters to that (users) array
+      .then((users) => {
+        let newUsers = this.state.monsters.concat(users);
+        let tmpState = {
+          monsters: newUsers
+        }
+        // return this.state = tmpState;
+        return this.setState(tmpState)
+      });
   }
   render() {
     return (
+      // map() -> creating a new array based on existing
       <div className = "App">
         {this.state.monsters.map(monster => (
           <h1 key={monster.id} > {monster.name} </h1>
