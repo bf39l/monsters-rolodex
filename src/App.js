@@ -8,10 +8,7 @@ class App extends Component{
     super();
     
     this.state = {
-      monsters:[{
-        "id": 0,
-        "name": "Bo"
-      }]
+      monsters:[]
     };
   }
   componentDidMount(){
@@ -24,14 +21,7 @@ class App extends Component{
       })
     // return us a new format which is a body (of URL) -> array 
     // set monsters to that (users) array
-      .then((users) => {
-        let newUsers = this.state.monsters.concat(users);
-        let tmpState = {
-          monsters: newUsers
-        }
-        // return this.state = tmpState;
-        return this.setState(tmpState)
-      });
+      .then(users => this.setState({monsters: users}));
   }
   render() {
     return (
