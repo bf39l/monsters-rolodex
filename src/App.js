@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Cardlist} from './components/card-list/card-list.component'
 //import { render } from '@testing-library/react';
 
 class App extends Component{
@@ -25,11 +26,18 @@ class App extends Component{
   }
   render() {
     return (
-      // map() -> creating a new array based on existing
+      /* 
+        map() -> creating a new array based on existing
+        anything in between these tags
+        <Cardlist></Cardlist> are children
+      */
       <div className = "App">
-        {this.state.monsters.map(monster => (
-          <h1 key={monster.id} > {monster.name} </h1>
-        ))}
+        <Cardlist name = "Hello" >
+          {/* children */}
+          {this.state.monsters.map(monster => (
+            <h1 key={monster.id} > {monster.name} </h1>
+          ))}
+        </Cardlist>
       </div>
     );
   }
