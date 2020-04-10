@@ -1,5 +1,6 @@
 import React from 'react';
 import './card-list.style.css';
+import {Card} from '../card/card.component';
 
 /* 
     function component -> stateless
@@ -8,7 +9,12 @@ import './card-list.style.css';
     <></> of our componets thats gets called
     {props.children} -> {} is js 
  */
-export const Cardlist = (props) =>{
-    console.log(props);
-    return (<div className = 'card-list'>{props.children}</div>)
-};
+export const Cardlist = (props) =>(
+    //console.log(props);
+    <div className = 'card-list'>
+         {props.monsters.map(monster => (
+             // pass monster into card component
+            <Card key={monster.id} monster = {monster} /> 
+          ))}
+     </div>
+);

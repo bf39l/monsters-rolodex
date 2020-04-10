@@ -32,12 +32,8 @@ class App extends Component{
         <Cardlist></Cardlist> are children
       */
       <div className = "App">
-        <Cardlist name = "Hello" >
-          {/* children */}
-          {this.state.monsters.map(monster => (
-            <h1 key={monster.id} > {monster.name} </h1>
-          ))}
-        </Cardlist>
+        {/* pass in the monsters as a porp from our App component */}
+        <Cardlist monsters = {this.state.monsters} />
       </div>
     );
   }
