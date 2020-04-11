@@ -9,7 +9,8 @@ class App extends Component{
     super();
     
     this.state = {
-      monsters:[]
+      monsters:[],
+      searchField: ''
     };
   }
   componentDidMount(){
@@ -33,6 +34,14 @@ class App extends Component{
       */
       <div className = "App">
         {/* pass in the monsters as a porp from our App component */}
+        <input type = 'search' 
+        placeholder = 'search monsters' 
+        onChange = {e => {
+          this.setState({searchField:e.target.value},()=>
+            console.log(this.state)
+          );
+        }}
+        />
         <Cardlist monsters = {this.state.monsters} />
       </div>
     );
