@@ -1,6 +1,6 @@
 import React from 'react';
 import './card-list.style.css';
-import {Card} from '../card/card.component';
+import { Card } from '../card/card.component';
 
 /* 
     function component -> stateless
@@ -9,12 +9,12 @@ import {Card} from '../card/card.component';
     <></> of our componets thats gets called
     {props.children} -> {} is js 
  */
-export const Cardlist = (props) =>(
+export const Cardlist = (props) => (
     //console.log(props);
-    <div className = 'card-list'>
-         {props.monsters.map(monster => (
-             // pass monster into card component
-            <Card key={monster.id} monster = {monster} /> 
-          ))}
-     </div>
+    <div className='card-list'>
+        {props.monsters.map(monster => (
+            // pass monster into card component
+            <Card key={monster.id} monster={monster} />
+        ))}
+    </div>
 );

@@ -1,32 +1,42 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Cardlist} from './components/card-list/card-list.component';
-import {Searchbox} from './components/search-box/search-box.component';
+import { Cardlist } from './components/card-list/card-list.component';
+import { Searchbox } from './components/search-box/search-box.component';
 //import { render } from '@testing-library/react';
 
-class App extends Component{
+class App extends Component {
   constructor() {
     super();
-    
+
     this.state = {
-      monsters:[],
+      monsters: [],
       searchField: ''
     };
+
+    // this.handleChange = this.handleChange.bind(this);
   }
-  componentDidMount(){
+
+  componentDidMount() {
     // making API request to that URL
     fetch("https://jsonplaceholder.typicode.com/users")
-    // give reponse in json format which we want / coverting into json format/object
+      // give reponse in json format which we want / coverting into json format/object
       .then((response) => {
         //only convert body of response to json object
         return response.json()
       })
-    // return us a new format which is a body (of URL) -> array 
-    // set monsters to that (users) array
-      .then(users => this.setState({monsters: users}));
+      // return us a new format which is a body (of URL) -> array 
+      // set monsters to that (users) array
+      .then(users => this.setState({ monsters: users }));
   }
 
+  handleChange = e => {
+    this.setState({ searchField: e.target.value });
+  }
+
+  // handleChange(e) {
+  //   this.setState({searchField:e.target.value});
+  // }
 
   render() {
     /*  object destructing -> extract multiple pieces of data from an array 
@@ -55,14 +65,16 @@ class App extends Component{
         This calls a function — handleChange() 
         that is used to set a new state for the input.
         
-      */ 
-      <div className = "App">
+      */
+      <div className="App">
         {/* pass in the monsters as a porp from our App component */}
-        <Searchbox 
-          placeholder = 'search monsters' 
-          handleChange = {e =>this.setState({searchField:e.target.value})}
+        <Searchbox
+          placeholder='search monsters'
+          handleChange={this.handleChange}
         />
-        <Cardlist monsters = {filteredMonsters} />
+        <Cardlist
+          monsters={filteredMonsters}
+        />
       </div>
     );
   }
