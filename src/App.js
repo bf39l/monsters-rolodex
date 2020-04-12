@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Cardlist} from './components/card-list/card-list.component'
+import {Cardlist} from './components/card-list/card-list.component';
+import {Searchbox} from './components/search-box/search-box.component';
 //import { render } from '@testing-library/react';
 
 class App extends Component{
@@ -25,24 +26,43 @@ class App extends Component{
     // set monsters to that (users) array
       .then(users => this.setState({monsters: users}));
   }
+
+
   render() {
+    /*  object destructing -> extract multiple pieces of data from an array 
+        or object and assign them to to local variables 
+
+        Filter() ->The filter() method creates an array filled with all 
+        array elements that pass a test (provided as a function).
+
+        Includes() method determines whether an array includes 
+        a certain value among its entries, 
+        returning true or false as appropriate.
+        arr.includes(valueToFind[, fromIndex])
+        The value to search for.
+    */
+    const { monsters, searchField } = this.state;
+    //const monsters = this.state.monsters;
+    //const searchField = this.state.searchField;
+    const filteredMonsters = monsters.filter(monster =>
+      monster.name.toLowerCase().includes(searchField.toLowerCase()))
     return (
       /* 
         map() -> creating a new array based on existing
         anything in between these tags
         <Cardlist></Cardlist> are children
-      */
+        An onChange event is triggered when values are entered in the input. 
+        This calls a function — handleChange() 
+        that is used to set a new state for the input.
+        
+      */ 
       <div className = "App">
         {/* pass in the monsters as a porp from our App component */}
-        <input type = 'search' 
-        placeholder = 'search monsters' 
-        onChange = {e => {
-          this.setState({searchField:e.target.value},()=>
-            console.log(this.state)
-          );
-        }}
+        <Searchbox 
+          placeholder = 'search monsters' 
+          handleChange = {e =>this.setState({searchField:e.target.value})}
         />
-        <Cardlist monsters = {this.state.monsters} />
+        <Cardlist monsters = {filteredMonsters} />
       </div>
     );
   }
