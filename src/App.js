@@ -64,9 +64,9 @@ class App extends Component {
       This calls a function — handleChange() 
       that is used to set a new state for the input.
     */
+   /* pass in the monsters as a porp from our App component */
     return (
       <div className="App">
-        {/* pass in the monsters as a porp from our App component */}
         <h1> Monsters Rolodex </h1>
         <Searchbox
           placeholder='search monsters'

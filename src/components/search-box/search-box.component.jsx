@@ -8,7 +8,6 @@ import './search-box.style.css';
 // const Searchbox = (props)
 // this.props.placeholder
 export const Searchbox = ({ placeholder, handleChange }) => (
-
     <input
         className='search'
         type='search'
