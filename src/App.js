@@ -56,16 +56,15 @@ class App extends Component {
     //const searchField = this.state.searchField;
     const filteredMonsters = monsters.filter(monster =>
       monster.name.toLowerCase().includes(searchField.toLowerCase()))
+    /* 
+      map() -> creating a new array based on existing
+      anything in between these tags
+      <Cardlist></Cardlist> are children
+      An onChange event is triggered when values are entered in the input. 
+      This calls a function — handleChange() 
+      that is used to set a new state for the input.
+    */
     return (
-      /* 
-        map() -> creating a new array based on existing
-        anything in between these tags
-        <Cardlist></Cardlist> are children
-        An onChange event is triggered when values are entered in the input. 
-        This calls a function — handleChange() 
-        that is used to set a new state for the input.
-        
-      */
       <div className="App">
         {/* pass in the monsters as a porp from our App component */}
         <h1> Monsters Rolodex </h1>

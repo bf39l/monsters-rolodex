@@ -5,9 +5,10 @@ import './search-box.style.css';
     if you don not need internal state nor access life cycle method 
     then just use functional component -> easy to read & test
 */
+// const Searchbox = (props)
+// this.props.placeholder
 export const Searchbox = ({ placeholder, handleChange }) => (
-    // const Searchbox = (props)
-    // this.props.placeholder
+
     <input
         className='search'
         type='search'
