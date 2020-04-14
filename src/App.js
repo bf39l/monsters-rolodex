@@ -68,6 +68,7 @@ class App extends Component {
       */
       <div className="App">
         {/* pass in the monsters as a porp from our App component */}
+        <h1> Monsters Rolodex </h1>
         <Searchbox
           placeholder='search monsters'
           handleChange={this.handleChange}
